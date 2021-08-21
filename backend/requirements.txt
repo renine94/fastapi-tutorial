@@ -7,3 +7,9 @@ psycopg2-binary
 
 # for venv var
 python-dotenv
+
+# for email validation
+pydantic[email]
+
+# hashing
+passlib[bcrypt]
