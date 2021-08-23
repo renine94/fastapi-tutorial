@@ -12,4 +12,4 @@ class User(Base):
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
 
-    jobs = relationship("Job", back_populates="onwer")
+    jobs = relationship("Job", back_populates="owner")
