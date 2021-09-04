@@ -1,0 +1,40 @@
+@BASE_URL = http://127.0.0.1:8000
+
+# @name 유저생성
+POST {{BASE_URL}}/users
+content-type: application/json
+
+{
+    "username": "testuser10",
+    "email": "testuser10@google.com",
+    "password": "qwer1234!"
+}
+
+###
+
+# @name 특정직업목록_가져오기
+GET {{BASE_URL}}/jobs/get/1
+
+###
+
+# @name 모든직업목록_가져오기
+GET {{BASE_URL}}/jobs/all
+
+###
+
+# @name Job_수정
+PUT {{BASE_URL}}/jobs/update/1
+content-type: application/json
+
+{
+    "title": "[Update]Devops Company",
+    "company": "[Update] Devops",
+    "company_url": "[update] http://www.naver.com",
+    "location": "[Update] Korea",
+    "description": "[Update] haha test job"
+}
+
+###
+
+# @name job_삭제
+DELETE {{BASE_URL}}/jobs/delete/1
