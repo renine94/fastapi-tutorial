@@ -11,7 +11,7 @@ def test_create_job(client):
         "date_posted": "2022-07-20",
     }
 
-    res = client.post("/job/create-job", json.dumps(data))
+    res = client.post("/jobs/create-job", json.dumps(data))
 
     assert res.status_code == 200
 
@@ -25,8 +25,34 @@ def test_retreive_job_by_id(client):
         "description": "Testing",
         "date_posted": "2022-07-20",
     }
-    client.post("/job/create-job", json.dumps(data))
-    response = client.get("/job/get/1")
+    client.post("/jobs/create-job", json.dumps(data))
+    response = client.get("/jobs/get/1")
 
     assert response.status_code == 200
     assert response.json()["title"] == "SDE 1 Yahoo"
+
+
+def test_retreive_all_jobs(client):
+    data = {
+        "title": "SDE 1 Yahoo",
+        "company": "testhoo",
+        "company_url": "https://www.fdj.com",
+        "location": "Korea, Incheon",
+        "description": "Testing",
+        "date_posted": "2022-07-20",
+    }
+    data2 = {
+        "title": "SDE 2 Yahoo",
+        "company": "testhoo",
+        "company_url": "https://www.fdj.com",
+        "location": "Korea, Incheon",
+        "description": "Testing",
+        "date_posted": "2022-07-20",
+    }
+    client.post("/jobs/create-job", json.dumps(data))
+    client.post("/jobs/create-job", json.dumps(data2))
+    response = client.get("/jobs/all")
+
+    assert response.status_code == 200
+    assert response.json()[1]["title"] == "SDE 2 Yahoo"
+    assert len(response.json()) == 2
