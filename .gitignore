@@ -3,3 +3,11 @@ __pycache__
 venv
 
 sql_app.db
+test_db.db
+
+*.http
+
+htmlcov/
+.coverage
+
+.DS_Store
