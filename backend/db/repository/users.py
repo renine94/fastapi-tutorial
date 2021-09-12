@@ -1,3 +1,4 @@
+from typing import Union
 from sqlalchemy.orm import Session
 
 from schemas.users import UserCreate
